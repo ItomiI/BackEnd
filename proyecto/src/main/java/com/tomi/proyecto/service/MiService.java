@@ -2,6 +2,7 @@ package com.tomi.proyecto.service;
 
 import com.tomi.proyecto.model.Dato;
 import com.tomi.proyecto.model.Tipodato;
+import com.tomi.proyecto.auth.model.User;
 import java.util.List;
 
 
@@ -13,4 +14,5 @@ public interface MiService {
     void DeleteTipodatobyid(long id);
     void DeleteDatobyid(long id);
     List<Dato> getAllDatos();
+    Dato editarDato(Dato dato);
 }

@@ -1,11 +1,14 @@
 package com.tomi.proyecto.service.impl;
 
+import com.tomi.proyecto.auth.model.User;
+import com.tomi.proyecto.auth.repository.UserRepository;
 import com.tomi.proyecto.exception.ResourceNotFoundException;
 import com.tomi.proyecto.model.Dato;
 import com.tomi.proyecto.model.Tipodato;
 import com.tomi.proyecto.repository.DatoRepository;
 import com.tomi.proyecto.repository.TipodatoRepository;
 import com.tomi.proyecto.service.MiService;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -14,13 +17,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class DatoServiceImpl implements MiService{
  
-    private DatoRepository datoRepository;
-    private TipodatoRepository tipodatoRepository;
+    private final DatoRepository datoRepository;
+    private final TipodatoRepository tipodatoRepository;
     
     public DatoServiceImpl(DatoRepository datoRepository,TipodatoRepository tipodatoRepository){
         super();
         this.datoRepository = datoRepository;
         this.tipodatoRepository = tipodatoRepository;
+        
     }
     
     @Override
@@ -59,6 +63,17 @@ public class DatoServiceImpl implements MiService{
     public List<Dato> getAllDatos() {
         List<Dato> findAll = datoRepository.findAll();
         return findAll;
+    }
+
+    
+
+    @Override
+    public Dato editarDato(Dato dato) {
+        datoRepository.editarDato(dato.getId(),dato.getLink(),dato.getNumero(),dato.getRutaimagen(),dato.getTexto(),dato.getTitulo());
+   
+        return datoRepository.findById(dato.getId()).orElseThrow(()-> 
+            new ResourceNotFoundException("dato","id",dato.getId()));
+        
     }
     
     
