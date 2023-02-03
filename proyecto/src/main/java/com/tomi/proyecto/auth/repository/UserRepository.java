@@ -11,10 +11,16 @@ public interface UserRepository extends JpaRepository<User,Long>{
     
     
     
-     @Query(value = "SELECT * FROM usuario WHERE contra = ?1 AND nombre = ?2", nativeQuery = true)
-    Optional<User> buscarUser(String contra, String nombre);
+    @Query(value = "SELECT * FROM usuario WHERE usuario = ?1", nativeQuery = true)
+    Optional<User> verSiExisteUser(String usuario);
     
-    @Query(value = "SELECT * FROM usuario WHERE nombre = ?1", nativeQuery = true)
-    Optional<User> verificarUser(String nombre);
+    @Query(value = "SELECT * FROM usuario WHERE usuario = ?1 AND contra = ?2", nativeQuery = true)
+    Optional<User> Logear(String user,String pass);
+    
+    
+    
+    
+    
+
     
 }

@@ -4,6 +4,7 @@
  */
 package com.tomi.proyecto.auth.service.impl;
 
+import com.tomi.proyecto.auth.DTO.Usuario;
 import com.tomi.proyecto.auth.model.User;
 import com.tomi.proyecto.auth.repository.UserRepository;
 import com.tomi.proyecto.auth.service.AuthService;
@@ -19,9 +20,22 @@ public class AuthServiceImpl  implements AuthService{
     private UserRepository userRepository;
     
     
+    @Override
+    public boolean verificarSiExisteUser(String usuario){
+        User a = userRepository.verSiExisteUser(usuario).orElse(null);
+        return a!=null;
+    }
+    
+    @Override
+    public boolean registrarNuevoUser(User newUser) {
+        
+        User a = userRepository.save(newUser);
+        return true;
+    }
+    
    @Override
-    public User getUser(String nombree, String password) {
-        User usuario = userRepository.buscarUser(password, nombree).orElseThrow(()-> 
+    public User logearUser(String nombree, String password) {
+        User usuario = userRepository.Logear(nombree, password).orElseThrow(()-> 
             new ResourceNotFoundException("usuario","usuario",nombree+" "+password));
         
     return usuario;
@@ -29,21 +43,21 @@ public class AuthServiceImpl  implements AuthService{
     } 
 
     @Override
-    public String newUser(String username, String password, String mail) {
-        User a;
-        try {
-            a = userRepository.verificarUser(username).orElseThrow(()-> 
-            new ResourceNotFoundException("usuario","usuario",username+" "+password));
-            return "ya existe";
-        } catch (ResourceNotFoundException e) {
-             User newuser = new User();
-            newuser.setContra(password);
-            newuser.setNombre(username);
-            newuser.setMailnose(mail);
-            userRepository.save(newuser);
-            return "registrado!";
-        }    
+    public boolean verificarLog(String usuario, String password) {
+         try {
+            User u = userRepository.Logear(usuario, password).orElseThrow(()-> 
+            new ResourceNotFoundException("usuario","usuario",usuario+" "+password));
+             return true;
+        } catch (Exception e) {
+            return false;
+        }
+        
     }
+
+   
+
+  
+  
     
     
     

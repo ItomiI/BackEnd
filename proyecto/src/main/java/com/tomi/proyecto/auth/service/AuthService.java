@@ -8,8 +8,11 @@ import com.tomi.proyecto.auth.model.User;
 
 public interface AuthService {
 
-    User getUser(String nombre, String password);
-    String newUser(String username, String password, String mail);
     
-    
+    boolean verificarSiExisteUser(String usuario);
+    boolean registrarNuevoUser(User newUser);
+    User logearUser(String usuario, String password);
+    boolean verificarLog(String usuario, String password);
+
+
 }
