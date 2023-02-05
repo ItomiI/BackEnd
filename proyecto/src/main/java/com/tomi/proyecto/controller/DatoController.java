@@ -53,11 +53,14 @@ public class DatoController {
         return new ResponseEntity<>(elSuperService.saveDato(midato),HttpStatus.OK);
     }
     
-    /*@PostMapping("tipodato")//
+    @PostMapping("tipodato")//
     public ResponseEntity<Tipodato> saveTipodato(@RequestBody Tipodato tipodato){
         return new ResponseEntity<>(elSuperService.saveTipodato(tipodato),HttpStatus.CREATED);
-    }*/
-    
+    }
+    @GetMapping("tipodato")//
+    public ResponseEntity<List<Tipodato>> getTipodato(@RequestBody Tipodato tipodato){
+        return new ResponseEntity<>(elSuperService.getTipoDatos(),HttpStatus.CREATED);
+    }
     @GetMapping("datos/{id}")//obtener un dato por id
      public ResponseEntity<Dato> getDato(@PathVariable("id") long id){
         return new ResponseEntity<>(elSuperService.getDatobyid(id),HttpStatus.OK);

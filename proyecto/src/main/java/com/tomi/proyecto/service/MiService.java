@@ -15,4 +15,5 @@ public interface MiService {
     void DeleteDatobyid(long id);
     List<Dato> getAllDatos();
     Dato editarDato(Dato dato);
+    List<Tipodato> getTipoDatos();
 }

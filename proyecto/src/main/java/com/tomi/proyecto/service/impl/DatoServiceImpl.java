@@ -75,6 +75,12 @@ public class DatoServiceImpl implements MiService{
             new ResourceNotFoundException("dato","id",dato.getId()));
         
     }
+
+    @Override
+    public List<Tipodato> getTipoDatos() {
+        return tipodatoRepository.findAll();
+                
+    }
     
     
     
