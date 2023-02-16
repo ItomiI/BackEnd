@@ -9,6 +9,8 @@ import com.tomi.proyecto.auth.model.User;
 import com.tomi.proyecto.auth.repository.UserRepository;
 import com.tomi.proyecto.auth.service.AuthService;
 import com.tomi.proyecto.exception.ResourceNotFoundException;
+import com.tomi.proyecto.metodos.Metodos;
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +20,7 @@ public class AuthServiceImpl  implements AuthService{
     
     @Autowired()
     private UserRepository userRepository;
-    
+    private final Metodos encripter = new Metodos();
     
     @Override
     public boolean verificarSiExisteUser(String usuario){
@@ -43,11 +45,14 @@ public class AuthServiceImpl  implements AuthService{
     } 
 
     @Override
-    public boolean verificarLog(String usuario, String password) {
+    public boolean verificarLog(String clave) {
+        ArrayList<String> p = encripter.DesEncriptar(clave,13);
+            String usuario = p.get(0);
+            String password = p.get(1);
          try {
             User u = userRepository.Logear(usuario, password).orElseThrow(()-> 
             new ResourceNotFoundException("usuario","usuario",usuario+" "+password));
-             return true;
+            return true;
         } catch (Exception e) {
             return false;
         }

@@ -136,7 +136,6 @@ public class Metodos {
             //por cada palabra ej [%0a%1a%2a%51a%52a%61a]
             String[] a = palabrita.split("%");
             a = Arrays.copyOfRange(a, 1, a.length);
-            System.out.println(Arrays.toString(a));
             //separo por % ej [0#a,1#a,2#a,51#a,5#1]
             StringBuilder palabraTraducida = new StringBuilder();
             for(int e = 0; e<a.length;e++){

@@ -12,7 +12,7 @@ public interface AuthService {
     boolean verificarSiExisteUser(String usuario);
     boolean registrarNuevoUser(User newUser);
     User logearUser(String usuario, String password);
-    boolean verificarLog(String usuario, String password);
+    boolean verificarLog(String clave);
 
 
 }

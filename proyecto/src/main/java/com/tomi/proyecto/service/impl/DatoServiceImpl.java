@@ -1,7 +1,5 @@
 package com.tomi.proyecto.service.impl;
 
-import com.tomi.proyecto.auth.model.User;
-import com.tomi.proyecto.auth.repository.UserRepository;
 import com.tomi.proyecto.exception.ResourceNotFoundException;
 import com.tomi.proyecto.model.Dato;
 import com.tomi.proyecto.model.Tipodato;
@@ -10,7 +8,6 @@ import com.tomi.proyecto.repository.TipodatoRepository;
 import com.tomi.proyecto.service.MiService;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
