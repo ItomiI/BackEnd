@@ -61,8 +61,7 @@ public class DatoServiceImpl implements MiService{
         List<Dato> findAll = datoRepository.findAll();
         return findAll;
     }
-
-    
+ 
 
     @Override
     public Dato editarDato(Dato dato) {

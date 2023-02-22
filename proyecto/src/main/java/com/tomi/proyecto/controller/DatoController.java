@@ -8,13 +8,10 @@ import com.tomi.proyecto.metodos.Metodos;
 import com.tomi.proyecto.model.Dato;
 import com.tomi.proyecto.model.Tipodato;
 import com.tomi.proyecto.service.MiService;
-import java.util.ArrayList;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,8 +20,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin(origins = "http://localhost:4200/")
-//@CrossOrigin(origins = "https://portfolio-28276.web.app/")
+//@CrossOrigin(origins = "http://localhost:4200/")
+@CrossOrigin(origins = "https://portfolio-28276.web.app/")
 @RestController
 @RequestMapping("miapi")
 public class DatoController {
@@ -65,21 +62,27 @@ public class DatoController {
     public ResponseEntity<Tipodato> saveTipodato(@RequestBody Tipodato tipodato){
         return new ResponseEntity<>(elSuperService.saveTipodato(tipodato),HttpStatus.CREATED);
     }
+    
     @GetMapping("tipodato")//
     public ResponseEntity<List<Tipodato>> getTipodato(@RequestBody Tipodato tipodato){
         return new ResponseEntity<>(elSuperService.getTipoDatos(),HttpStatus.CREATED);
     }
     
-    @GetMapping("datos")//devuelve todo
+    @GetMapping("datos")//devuelve //
     public ResponseEntity<List<Dato>> getAllDatos(){
          
        return new ResponseEntity<>(elSuperService.getAllDatos(),HttpStatus.OK);
     }
      
-    @DeleteMapping("datos/{id}")//borra por id
-    public ResponseEntity<Boolean> deleteDato(@PathVariable("id") long id){
-        elSuperService.DeleteDatobyid(id);
-        return new ResponseEntity<>(true,HttpStatus.OK); 
+    @PostMapping("datos/eliminar")//borra por id
+    public ResponseEntity<Boolean> deleteDato(@RequestBody EliminarRequest r){
+        boolean x = authservice.verificarLog(r.getClave());
+        if(x){
+            elSuperService.getDatobyid(r.getDato());
+            elSuperService.DeleteDatobyid(r.getDato());
+            return new ResponseEntity<>(true,HttpStatus.OK);
+        }
+        return new ResponseEntity<>(false,HttpStatus.OK);
     }
     
     //editarDato
