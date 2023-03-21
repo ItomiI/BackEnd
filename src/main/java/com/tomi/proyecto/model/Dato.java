@@ -1,6 +1,5 @@
 package com.tomi.proyecto.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -11,7 +10,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
-import org.springframework.http.ResponseEntity;
 
 @Data
 @Entity
@@ -28,7 +26,7 @@ public class Dato {
     @Column(name = "rutaimagen", nullable = true)
     private String rutaimagen;
     
-    @Column(name = "texto", nullable = true,length = 1500)
+    @Column(name = "texto", nullable = true,length = 150)
     private String texto;
     
     @Column(name = "link", nullable = true)

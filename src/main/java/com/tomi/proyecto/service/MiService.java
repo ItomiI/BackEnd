@@ -2,7 +2,6 @@ package com.tomi.proyecto.service;
 
 import com.tomi.proyecto.model.Dato;
 import com.tomi.proyecto.model.Tipodato;
-import com.tomi.proyecto.auth.model.User;
 import java.util.List;
 
 

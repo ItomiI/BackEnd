@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-//@CrossOrigin(origins = "http://localhost:4200")
-@CrossOrigin(origins = "https://portfolio-28276.web.app/")
+@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "https://portfolio-28276.web.app/")
 @RestController
 @RequestMapping("auto")
 public class AuthController {
@@ -29,8 +29,7 @@ public class AuthController {
         this.encripter = new Metodos();
     }
     
-
-    @PostMapping("registrar")
+    /*@PostMapping("registrar")
     public ResponseEntity<Boolean> Registrar(@RequestBody User usuario){
         boolean verif = authservice.verificarSiExisteUser(usuario.getUsuario());
         if(!verif){
@@ -40,7 +39,7 @@ public class AuthController {
             return new ResponseEntity<>(false,HttpStatus.OK);
         }
         
-    }
+    }*/
     
     @PostMapping("logear")
     public ResponseEntity<String[]> Logear(@RequestBody(required = true) Usuario user){

@@ -24,23 +24,20 @@ public class AuthServiceImpl  implements AuthService{
     
     @Override
     public boolean verificarSiExisteUser(String usuario){
-        User a = userRepository.verSiExisteUser(usuario).orElse(null);
-        return a!=null;
+        return userRepository.verSiExisteUser(usuario).isPresent();
     }
     
     @Override
     public boolean registrarNuevoUser(User newUser) {
-        
-        User a = userRepository.save(newUser);
+        userRepository.save(newUser);
         return true;
     }
     
    @Override
     public User logearUser(String nombree, String password) {
         User usuario = userRepository.Logear(nombree, password).orElseThrow(()-> 
-            new ResourceNotFoundException("usuario","usuario",nombree+" "+password));
-        
-    return usuario;
+            new ResourceNotFoundException("usuario o pass","usuario o pass", nombree+" "+password));
+        return usuario;
       
     } 
 

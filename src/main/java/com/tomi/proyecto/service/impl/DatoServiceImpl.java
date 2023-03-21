@@ -62,20 +62,15 @@ public class DatoServiceImpl implements MiService{
         return findAll;
     }
  
-
     @Override
     public Dato editarDato(Dato dato) {
-        datoRepository.editarDato(dato.getId(),dato.getLink(),dato.getNumero(),dato.getRutaimagen(),dato.getTexto(),dato.getTitulo());
-   
-        return datoRepository.findById(dato.getId()).orElseThrow(()-> 
-            new ResourceNotFoundException("dato","id",dato.getId()));
-        
+      return datoRepository.save(dato);  
     }
 
     @Override
     public List<Tipodato> getTipoDatos() {
         return tipodatoRepository.findAll();
-                
+    
     }
     
     

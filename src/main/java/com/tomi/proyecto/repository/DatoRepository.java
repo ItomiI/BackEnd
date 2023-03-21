@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 public interface DatoRepository extends JpaRepository<Dato,Long>{
     
-    
+    /*
         @Transactional
         @Modifying(clearAutomatically = true)
         @Query(value = 
@@ -28,7 +28,7 @@ public interface DatoRepository extends JpaRepository<Dato,Long>{
                         @Param("rutaimagen") String rutaimagen,
                         @Param("texto") String texto,
                         @Param("titulo") String titulo);
-  
+  */
        // @Query(value = "UPDATE superdatos SET link=:nd.link,numero=:nd.numero,rutaimagen=:nd.rutaimagen,texto=:nd.texto,titulo=:nd.titulo  WHERE id = :nd.id", nativeQuery = true)
         //void editarDato(@Param("nd") Dato nd); //no funciona
         
