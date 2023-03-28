@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM amazoncorretto:11-alpine-jdk
 
 copy target/proyecto-0.0.1-SNAPSHOT.jar app.jar
 
