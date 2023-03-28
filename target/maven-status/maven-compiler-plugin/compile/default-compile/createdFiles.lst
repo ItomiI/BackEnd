@@ -1,0 +1,16 @@
+com\tomi\proyecto\auth\DTO\Usuario.class
+com\tomi\proyecto\model\Dato.class
+com\tomi\proyecto\repository\TipodatoRepository.class
+com\tomi\proyecto\controller\DatoController.class
+com\tomi\proyecto\ProyectoApplication.class
+com\tomi\proyecto\auth\controller\AuthController.class
+com\tomi\proyecto\auth\repository\UserRepository.class
+com\tomi\proyecto\metodos\Metodos.class
+com\tomi\proyecto\model\Tipodato.class
+com\tomi\proyecto\auth\service\impl\AuthServiceImpl.class
+com\tomi\proyecto\service\impl\DatoServiceImpl.class
+com\tomi\proyecto\service\MiService.class
+com\tomi\proyecto\repository\DatoRepository.class
+com\tomi\proyecto\auth\service\AuthService.class
+com\tomi\proyecto\auth\model\User.class
+com\tomi\proyecto\exception\ResourceNotFoundException.class

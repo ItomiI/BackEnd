@@ -1,5 +1,4 @@
 package com.tomi.proyecto.auth.controller;
-
 import com.tomi.proyecto.auth.DTO.Usuario;
 import com.tomi.proyecto.auth.model.User;
 import com.tomi.proyecto.auth.service.AuthService;
@@ -13,13 +12,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin(origins = "http://localhost:4200")
-//@CrossOrigin(origins = "https://portfolio-28276.web.app/")
+//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://portfolio-28276.web.app/")
 @RestController
 @RequestMapping("auto")
 public class AuthController {
     
-
     private final  AuthService authservice;
     private final Metodos encripter;
     
@@ -70,17 +68,7 @@ public class AuthController {
         boolean x = authservice.verificarLog(r);
         return  new ResponseEntity<>(x,HttpStatus.OK);
         
-    }
+    }//authservice.getUser(usuario.getUsuario(), usuario.getPassword())
     
-    
-    //authservice.getUser(usuario.getUsuario(), usuario.getPassword())
-    
-    
-    
-    
-    
-    
-    
-    
-    
+ 
 }
