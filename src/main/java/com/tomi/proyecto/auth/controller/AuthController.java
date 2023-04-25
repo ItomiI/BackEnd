@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,6 +40,12 @@ public class AuthController {
         
     }*/
     
+    @GetMapping("")
+    public ResponseEntity<String> saludo(){
+        return new ResponseEntity<>("funciona",HttpStatus.OK);
+    }
+    
+    
     @PostMapping("logear")
     public ResponseEntity<String[]> Logear(@RequestBody(required = true) Usuario user){
         boolean verif = authservice.verificarSiExisteUser(user.getUsuario());
@@ -66,7 +73,7 @@ public class AuthController {
     @PostMapping("verif")
     public  ResponseEntity<Boolean> vef(String r ){
         boolean x = authservice.verificarLog(r);
-        return  new ResponseEntity<>(x,HttpStatus.OK);
+        return new ResponseEntity<>(x,HttpStatus.OK);
         
     }//authservice.getUser(usuario.getUsuario(), usuario.getPassword())
     
